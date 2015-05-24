@@ -1,11 +1,22 @@
 import fileinput
 import sys
+import re
 
-
+def grep(pattern,flags=0):
+    """
+    create a generator which consume input 
+    and filter the ones which match the pattern
+    """
+    regex = re.compile(pattern,flags)
+    def _grep(input):
+        yield from (line for line in input if regex.search(line))
+    return _grep
+        
 def cat(*file_names):
     """
     create a generator of line in file_names files (without endline)
     """
+
     def _cat(input):
         if file_names:
             input = fileinput.input(*file_names)
@@ -88,7 +99,11 @@ def chain(*generators,input=None):
 
 
 if __name__ == "__main__":
-    if sys.argv[1] == "1":
+    if sys.argv[1] == "grep":
+        chain(cat(sys.argv[3:]),
+              grep(sys.argv[2]),
+              output())
+    elif sys.argv[1] == "1":
         # stupid example
         chain(cat(sys.argv[2:]),
               split(","),

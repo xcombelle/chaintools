@@ -7,7 +7,9 @@ available generator factories
 (name should be self explained)
 
     def cat(*file_names):
-    
+
+    def grep(pattern,flags=0):
+
     def output(end=None):
     
     def split(separator=None):
@@ -23,7 +25,6 @@ available generator factories
     def take(n):
     
     def chain(*generators,input=None):
-
 
 example of  implementation of generator factory
 
