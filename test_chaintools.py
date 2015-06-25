@@ -54,7 +54,17 @@ class MyTest(unittest.TestCase):
             cat("test_abc.txt","test_def.txt"),
             expected=["abc","def"],
         )
-
+        
+    def test_output(self):
+        oldstdout = sys.stdout
+        sys.stdout = StringIO()
+        chain(
+            output(),
+            input=["abc"],
+        )
+        self.assertEqual(sys.stdout.getvalue(),"abc\n")
+        sys.stdout = oldstdout
+        
 
 if __name__ == '__main__':
     unittest.main()
