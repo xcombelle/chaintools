@@ -22,9 +22,14 @@ available generator factories
     
     def map(func):
     
-    def take(n):
+    def head(n=10):
+    
+    def tail(n=10):
     
     def chain(*generators,input=None):
+
+    def run(command):
+    #only works under unix
 
 example of  implementation of generator factory
 
@@ -45,5 +50,5 @@ example of use
           filter(lambda s: s and s[0] != '#'),
 		  map(float),
 		  sort(),
-		  take(10),
+		  head(10),
 		  output())
