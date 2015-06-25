@@ -111,7 +111,7 @@ def cat(*file_names):
 
     def _cat(input):
         if file_names:
-            input = fileinput.input(*file_names)
+            input = fileinput.FileInput(file_names)
         else:
             input = sys.stdin
         for elt in input:
@@ -208,9 +208,13 @@ def chain(*generators,input=None):
     """
     chains each generator
     """
-    for generator in generators:
+    if input is not None:
+        input = iter(input)
+    for i,generator in enumerate(generators,1):
+        if generator is None:
+            raise ValueError("generator n°{} is None, probably forget to return function from generator factory".format(i)) 
         input = generator(input)
-    return generator
+    return input
 
     
 
