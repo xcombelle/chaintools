@@ -10,6 +10,13 @@ from chaintools import (
     run,
     cat,
     output,
+    split,
+    sort,
+    join,
+    map,
+    head,
+    tail,
+    null,
 )
 
 def invalid_factory():
@@ -64,7 +71,36 @@ class MyTest(unittest.TestCase):
         )
         self.assertEqual(sys.stdout.getvalue(),"abc\n")
         sys.stdout = oldstdout
-        
 
+    def test_split(self):
+        self.assertChain(
+            split(","),
+            expected=[["abc","def"]],
+            input=["abc,def"])
+
+    def test_sort(self):
+        self.assertChain(
+            sort(key=lambda s:s[0],reverse=True),
+            expected=["xyz","abc","aef"],
+            input=["abc","xyz","aef"])
+
+    def test_join(self):
+        self.assertChain(
+            join(","),
+            expected=["abc,def"],
+            input=[["abc","def"]])
+
+    def test_map(self):
+        self.assertChain(
+            map(int),
+            expected=[1,2,3],
+            input=["1","2","3"])
+
+    def test_head(self):
+        self.assertChain(
+            head(n=2),
+            expected=["1","2"],
+            input=["1","2","3"])
+        
 if __name__ == '__main__':
     unittest.main()

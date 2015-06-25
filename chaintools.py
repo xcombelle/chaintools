@@ -175,7 +175,7 @@ def head(n=10):
     create a generator which return the first n elements
     """
     def _head(input):
-        for i,elt in enumerate(input):
+        for i,elt in enumerate(input,1):
             yield elt
             if i == n:
                 break
@@ -198,7 +198,7 @@ def tail(n=10):
 
 def null():
     """
-    retunr an empty generator
+    return an empty generator
     """
     def _null(input):
         return iter([])
@@ -224,12 +224,16 @@ if __name__ == "__main__":
               run(sys.argv[3]),
               output())
     if sys.argv[1] == "grep":
-        chain(cat(sys.argv[3:]),
+        chain(cat(*sys.argv[3:]),
               grep(sys.argv[2]),
               output())
     if sys.argv[1] == "tail":
-        chain(cat(sys.argv[2:]),
+        chain(cat(*sys.argv[2:]),
               tail(),
+              output())
+    if sys.argv[1] == "head":
+        chain(cat(*sys.argv[2:]),
+              head(n=2),
               output())
               
     elif sys.argv[1] == "1":
