@@ -25,7 +25,9 @@ available generator factories
     def head(n=10):
     
     def tail(n=10):
-    
+	
+	def null()
+	
     def chain(*generators,input=None):
 
     def run(command):
@@ -46,6 +48,21 @@ example of  implementation of generator factory
 
 example of use
 
+	from chaintools import (
+		chain,
+		grep,
+		run,
+		cat,
+		output,
+		split,
+		sort,
+		join,
+		map,
+		head,
+		tail,
+		null,
+	)
+	
      chain(cat(),
            filter(lambda s: s and s[0] != '#'),
            map(float),
