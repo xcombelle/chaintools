@@ -101,6 +101,18 @@ class MyTest(unittest.TestCase):
             head(n=2),
             expected=["1","2"],
             input=["1","2","3"])
+
+    def test_tail(self):
+        self.assertChain(
+            tail(n=2),
+            expected=["2","3"],
+            input=["1","2","3"])
+
+    def test_null(self):
+        self.assertChain(
+            null(),
+            expected=[],
+        )
         
 if __name__ == '__main__':
     unittest.main()
