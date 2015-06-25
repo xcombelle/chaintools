@@ -46,9 +46,9 @@ example of  implementation of generator factory
 
 example of use
 
-	chain(cat(),
-          filter(lambda s: s and s[0] != '#'),
-		  map(float),
-		  sort(),
-		  head(10),
-		  output())
+     chain(cat(),
+           filter(lambda s: s and s[0] != '#'),
+           map(float),
+           sort(),
+           head(10),
+           output())
