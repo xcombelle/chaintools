@@ -1,5 +1,6 @@
 import unittest
 import sys
+import re
 
 from io import StringIO
 
@@ -7,6 +8,7 @@ from io import StringIO
 from chaintools import (
     chain,
     grep,
+    sub,
     run,
     cat,
     output,
@@ -14,6 +16,7 @@ from chaintools import (
     sort,
     join,
     map,
+    filter,
     head,
     tail,
     null,
@@ -37,7 +40,23 @@ class MyTest(unittest.TestCase):
             expected=["abc"],
             input=["abc","ABC"])
 
+    def test_sub_string(self):
+        self.assertChain(
+            sub(r"/ab(.*?)/",r"hello:'\1',",count=2,flags=re.IGNORECASE),
+            expected=["hello:'c',hello:'d',/abe/"],
+            input=["/abc//Abd//abe/"],)
 
+        
+    def test_sub_function(self):
+        def double(match):
+            #print (match.groups())
+            return match.group(1)*2
+        self.assertChain(
+            sub(r"/ab(.*?)/",double),
+            expected=["ccdd"],
+            input=["/abc//abd/"],)
+
+        
     def test_run(self):
         self.assertChain(
             run("""python3 -c 'print("abc")' """),
@@ -95,6 +114,12 @@ class MyTest(unittest.TestCase):
             map(int),
             expected=[1,2,3],
             input=["1","2","3"])
+
+    def test_filter(self):
+        self.assertChain(
+            filter(bool),
+            expected=[1,2,3],
+            input=[0,1,2,3])
 
     def test_head(self):
         self.assertChain(

@@ -4,7 +4,7 @@ The purpose of this library is to make available unix tools like with a pythonic
 
 An example of use is
 
-	chain(cat(),
+    chain(cat(),
           filter(lambda s: s and s[0] != '#'),
           map(float),
           sort(),
@@ -59,40 +59,42 @@ a generator factory is a strange beast at the first see but it is not so
 complicated
 
     def filter(func):
-		"""
-		return a generator which
-		filter all element where func return true
-		"""
+        """
+        return a generator which
+        filter all element where func return true
+        """
 
         # note that the func is a parameter of the generator factory
         # which is used only by the generator
-		
-		def _filter(input):
-		    # for correct use all generator have to have a single parameter
+        
+        def _filter(input):
+            # for correct use all generator have to have a single parameter
             # which is the input
             # and generate the result
-			yield from (elt for elt in input if func(elt))
-		return _filter
+            yield from (elt for elt in input if func(elt))
+        return _filter
 
 
 # what can I import ?
 
 and easy import of all functionnality now available is 
 
-	from chaintools import (
-		chain,
-		grep,
-		run,
-		cat,
-		output,
-		split,
-		sort,
-		join,
-		map,
-		head,
-		tail,
-		null,
-	)
+    from chaintools import (
+        chain,
+        grep,
+        sub,
+        run,
+        cat,
+        output,
+        split,
+        sort,
+        join,
+        map,
+        filter,
+        head,
+        tail,
+        null,
+    )
 
 be aware that it **shadows map and filter builtins**
 
@@ -100,29 +102,31 @@ be aware that it **shadows map and filter builtins**
 
 the protoype of builtins generator factories are the following
 
-	def cat(*file_names):
+    def cat(*file_names):
 
-	def grep(pattern,flags=0):
+    def grep(pattern,flags=0):
 
-	def output(end=None):
+    def sub(pattern,replacement,*,count=0,flags=0):
 
-	def split(separator=None):
+    def output(end=None):
 
-	def sort(key=None,reverse=False):
+    def split(separator=None):
 
-	def join(separator=""):
+    def sort(key=None,reverse=False):
 
-	def filter(func):
+    def join(separator=""):
 
-	def map(func):
+    def filter(func):
 
-	def head(n=10):
+    def map(func):
 
-	def tail(n=10):
+    def head(n=10):
 
-	def null()
+    def tail(n=10):
 
-	def chain(*generators,input=None):
+    def null()
 
-	def run(command):
-	#only works under unix
+    def chain(*generators,input=None):
+
+    def run(command):
+    #only works under unix

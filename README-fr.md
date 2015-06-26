@@ -45,6 +45,7 @@ On peut importer
     from chaintools import (
         chain,
         grep,
+        sub,
         run,
         cat,
         output,

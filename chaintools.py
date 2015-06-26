@@ -103,7 +103,19 @@ def grep(pattern,flags=0):
     def _grep(input):
         yield from (line for line in input if regex.search(line))
     return _grep
-        
+
+
+def sub(pattern,replacement,*,count=0,flags=0):
+    """
+    create a generator which consume input
+    and replace the ones which match the pattern
+    with the replacement string/function (see re.sub for detail)
+    """
+    regex = re.compile(pattern,flags)
+    def _sub(input):
+        yield from (regex.sub(repl=replacement,string=line,count=count)  for line in input)
+    return _sub
+
 def cat(*file_names):
     """
     create a generator of line in file_names files (without endline)
