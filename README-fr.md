@@ -2,7 +2,7 @@
 
 # Présentation
 
-Le but de cette bibliothèqye est de créer des outils type unix avec une syntaxe pythonique. Le seul mécanisme disponible est le pipeline
+Le but de cette bibliothèque est de créer des outils type unix avec une syntaxe pythonique. Le seul mécanisme disponible est le pipeline
 
 Un exemple d'utilisation
 
@@ -13,7 +13,7 @@ Un exemple d'utilisation
           head(n=10),
           output())
 
-Le secret d'utilisation est d'une part la fonction `chain` qui fait un pipeline de générateur et les génératuers qui sont créés par des usines à générateur (que j'appelle outil). Plusieurs outils sont disponibles. Il est faciel de créer sont propre outil.
+Le secret d'utilisation est d'une part la fonction `chain` qui fait un pipeline de générateur et les générateurs qui sont créés par des usines à générateur (que j'appelle outil). Plusieurs outils sont disponibles. Il est facile de créer sont propre outil.
 
 # Statut
 
@@ -31,7 +31,7 @@ Pourquoi tous les générateurs utilisent une notation de type fonction:
 Je crois que les usine à générateur ont des caractéristiques correspondant aux outils unix comme les options (en utilisant les paramètre) les code d'erreur (en utilisant les exception). La seule partie manquante est la sortie d'erreur standard.
 
 La principale différence est qu'il n'y a pas un processus par outil (sauf quand on lance un programme externe):
-* Il n'y a pas de parallelisation native des outils
+* Il n'y a pas de parallélisation native des outils
 * Il n'y a pas besoin de créer un processus pour chaque outil
 
 Un grand avantage des chaintools est que les type ne sont pas limités à des
