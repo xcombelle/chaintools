@@ -6,7 +6,7 @@ Le but de cette bibliothèque est de créer des outils type unix avec une syntax
 
 Un exemple d'utilisation
 
-	chain(cat(),
+    chain(cat(),
           filter(lambda s: s and s[0] != '#'),
           map(float),
           sort(),
