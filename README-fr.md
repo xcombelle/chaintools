@@ -42,19 +42,19 @@ connaissance) parmi les outils unix.
 
 On peut importer
 
-	from chaintools import (
-		chain,
-		grep,
-		run,
-		cat,
-		output,
-		split,
-		sort,
-		join,
-		map,
-		head,
-		tail,
-		null,
-	)
+    from chaintools import (
+        chain,
+        grep,
+        run,
+        cat,
+        output,
+        split,
+        sort,
+        join,
+        map,
+        head,
+        tail,
+        null,
+    )
 
 attention, cet import **remplace les builtins map et filter**.
