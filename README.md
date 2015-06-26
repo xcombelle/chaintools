@@ -40,14 +40,14 @@ The hope I have is to have all the power of unix tools in a pythonic way.
 
 Reasons why all the generators use function notation:
 
-* uniform notation: no wonder which needs and which not need
+* uniform notation: no wonder which needs and which not need parenthesis.
 * make think that the generator does something
 
-I believe that the generator factories have corresponding behaviour than caracteristics of unix tools like command switch (by using parameters) error code (by using exception). The only missing part is the standard error.
+I believe that the generator factories have corresponding behaviour than caracteristics of unix tools like command switch (by using parameters), error code (by using exception). The only missing part is the standard error.
 
-The main difference is that there is not a process by tool (except when running an external program):
+The main difference is that there is not a processus by tool (except when running an external program):
 * there is not native parallelization of tools 
-* there is no need to create a process for each tool
+* there is no need to create a processus for each tool
 
 A great avantage of chaintools is that the types are not limited to byte stream.
 An example of this power is the join and split tools which has no equivalent (to my knowledge) in unix tools.
