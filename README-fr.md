@@ -21,7 +21,7 @@ Cette bibliothèque est en pre-0.1. Il y aura donc probablement des changements.
 
 # Pourquoi cette syntaxe
 
-J'ai l'espoir d'avoir tous le pouvoir des outils unix d'une manière pythonique
+J'ai l'espoir d'avoir tous les pouvoir des outils unix d'une manière pythonique
 
 Pourquoi tous les générateurs utilisent une notation de type fonction:
 
@@ -52,6 +52,7 @@ On peut importer
         sort,
         join,
         map,
+        filter,
         head,
         tail,
         null,
